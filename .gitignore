@@ -1,0 +1,18 @@
+# Real values and state - never commit these
+terraform.tfvars
+*.tfvars
+!terraform.tfvars.example
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfplan
+crash.log
+crash.*.log
+
+# Generated validation output
+RBAC_Lab_Report.txt
+
+# Commit .terraform.lock.hcl - it pins exact provider versions so a
+# clone of this repo reproduces the same build. Don't add it here.
+# (Note: the SOP's version of this file ignores it. That's the one
+# place this project deliberately disagrees with the SOP.)

@@ -1,0 +1,11 @@
+# Safe to commit. Copy this to terraform.tfvars and fill in the real
+# Object IDs there - terraform.tfvars is gitignored.
+
+resource_group_name = "RG-FileServerLab" # Case-sensitive, must match Lab 1
+vm_name             = "FS01"             # Case-sensitive, must match Lab 1
+
+# Object IDs for the three personas. These are Entra ID GUIDs, not
+# email addresses - emails can change, Object IDs never do.
+sysadmin_object_id     = "REPLACE_WITH_SYSADMIN_OBJECT_ID"
+support_user_object_id = "REPLACE_WITH_SUPPORTTECH_OBJECT_ID"
+auditor_object_id      = "REPLACE_WITH_AUDITOR_OBJECT_ID"
