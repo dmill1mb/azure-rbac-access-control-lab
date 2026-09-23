@@ -183,14 +183,6 @@ Lab 2 has its own folder and its own state file (`rbac-lab.tfstate`) rather than
 
 The tradeoff is real: Terraform can no longer see the dependency between the two projects, and `data.tf` fails if Lab 1 isn't deployed.
 
-## Where the source SOP was wrong
-
-The SOP printed a permission matrix and expected results that don't match Azure's actual role definitions. Checked against `az role definition list`:
-
-- **Virtual Machine Contributor can delete the VM.** Its actions include `Microsoft.Compute/virtualMachines/*`. The SOP said it couldn't.
-- **"Connect via RDP" isn't an RBAC permission.** RDP access is decided by the network security group and Windows' Remote Desktop Users group (Lab 1), not Azure roles.
-- **SupportTech can list role assignments.** Virtual Machine Contributor includes `Microsoft.Authorization/*/read`. The SOP expected that to fail. What it can't do is *write* them — the escalation test above.
-- **The SOP's validation script only matched role names**, so a Reader assigned to the wrong principal would still pass, and its permission matrix was hardcoded text that tested nothing. `validate-lab.ps1` here matches each role to its exact principal and scope, and leaves enforcement to the persona tests.
 
 ## Troubleshooting log
 
